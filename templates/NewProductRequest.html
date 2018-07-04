@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main class="container signup-section">
+    <div class="section-content">
+      <h2>Register a request for a new Product.</h2>
+
+      <form method="POST" action="/signup">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          {{ form.productName.label }}
+
+          {% if form.productName.errors %}
+            {% for error in form.productName.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.productName }}
+        </div>
+
+        <div class="form-group">
+          {{ form.region.label }}
+
+          {% if form.region.errors %}
+            {% for error in form.region.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.region }}
+        </div>
+
+        <div class="form-group">
+          {{ form.technology.label }}
+
+          {% if form.technology.errors %}
+            {% for error in form.technology.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.technology }}
+        </div>
+        <div class="form-group">
+          {{ form.usersCategory.label }}
+
+          {% if form.usersCategory.errors %}
+            {% for error in form.usersCategory.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.usersCategory }}
+        </div>
+        <div class="form-group">
+          {{ form.environment.label }}
+
+          {% if form.environment.errors %}
+            {% for error in form.environment.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.environment }}
+        </div>
+        <div class="form-group">
+          {{ form.serviceCodeType.label }}
+
+          {% if form.serviceCodeType.errors %}
+            {% for error in form.serviceCodeType.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.serviceCodeType }}
+        </div>
+        <div class="form-group">
+          {{ form.dpiParameters.label }}
+
+          {% if form.dpiParameters.errors %}
+            {% for error in form.dpiParameters.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.dpiParameters }}
+        </div>
+        <div class="form-group">
+          {{ form.policyName.label }}
+
+          {% if form.policyName.errors %}
+            {% for error in form.policyName.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.policyName }}
+        </div>
+
+
+        {{ form.submit(class="btn-primary") }}
+      </form>
+    </div>
+  </main>
+{% endblock %}

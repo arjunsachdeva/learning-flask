@@ -13,3 +13,14 @@ class LoginForm(Form):
   email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Please enter your email address.")])
   password = PasswordField('Password', validators=[DataRequired("Please enter a password.")])
   submit = SubmitField("Sign in")
+
+class NewProductRequestForm(Form):
+    productName = StringField('Product Name', validators=[DataRequired("Please enter the data.")])
+    region = StringField('Region', validators=[DataRequired("Please enter the data.")])
+    technology = StringField('Technology', validators=[DataRequired("Please enter the data.")])
+    usersCategory = StringField('Users Category', validators=[DataRequired("Please enter the data.")])
+    environment = StringField('Environment', validators=[DataRequired("Please enter the data.")])
+    serviceCodeType = StringField('Service Code/Type', validators=[DataRequired("Please enter the data.")])
+    dpiParameters = StringField('DPI Parameters', validators=[DataRequired("Please enter the data.")])
+    policyName = StringField('Policy Name', validators=[DataRequired("Please enter the data.")])
+    submit = SubmitField("Submit Request")

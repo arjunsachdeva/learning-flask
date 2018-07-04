@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from models import db, User
-from forms import SignupForm, LoginForm
+from forms import SignupForm, LoginForm, NewProductRequestForm
 
 app = Flask(__name__)
 
@@ -62,6 +62,20 @@ def login():
 
     elif request.method == 'GET':
         return render_template('login.html', form=form)
+
+@app.route("/NewProductRequest", methods=['GET', 'POST'])
+def new_product_request():
+    form = NewProductRequestForm()
+    if request.method == 'POST':
+        if form.validate() == False:
+            return render_template("NewProductRequest.html", form=form)
+        else:
+            session['email'] = form.email.data
+            return redirect(url_for('home'))
+
+    elif request.method == 'GET':
+        return render_template("NewProductRequest.html", form=form)
+
 
 @app.route("/logout")
 def logout():
