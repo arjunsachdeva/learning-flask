@@ -22,3 +22,27 @@ class User(db.Model):
 
   def check_password(self, password):
     return check_password_hash(self.pwdhash, password)
+
+class ProductRequest(db.Model):
+  __tablename__ = 'newproductrequest'
+  uid = db.Column(db.Integer, primary_key = True)
+  productname = db.Column(db.String(200))
+  region = db.Column(db.String(200))
+  technology = db.Column(db.String(200))
+  userscategory = db.Column(db.String(200))
+  environment = db.Column(db.String(200))
+  servicecodetype = db.Column(db.String(200))
+  dpiparameters = db.Column(db.String(200))
+  policyname = db.Column(db.String(200))
+
+  def __init__(self, productname, region, technology, userscategory, environment, servicecodetype, dpiparameters, policyname):
+    self.productname = productname.title()
+    self.region = region.title()
+    self.technology = technology.title()
+    self.userscategory = userscategory.title()
+    self.environment = environment.title()
+    self.servicecodetype = servicecodetype.title()
+    self.dpiparameters = dpiparameters.title()
+    self.policyname = policyname.title()
+
+

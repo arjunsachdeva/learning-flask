@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-from models import db, User
+from models import db, User, ProductRequest
 from forms import SignupForm, LoginForm, NewProductRequestForm
 
 app = Flask(__name__)
@@ -37,8 +37,8 @@ def signup():
 @app.route("/home")
 def home():
     #protect the pages
-    if 'email' not in session:
-        return redirect(url_for('login'))
+    #if 'email' not in session:
+    #    return redirect(url_for('login'))
 
     return render_template("home.html")
 
@@ -70,12 +70,18 @@ def new_product_request():
         if form.validate() == False:
             return render_template("NewProductRequest.html", form=form)
         else:
-            session['email'] = form.email.data
-            return redirect(url_for('home'))
+            newRequest = ProductRequest(form.productName.data, form.region.data, form.technology.data, form.usersCategory.data, form.environment.data, form.serviceCodeType.data, form.dpiParameters.data, form.policyName.data)
+            db.session.add(newRequest)
+            db.session.commit()
+            
+            #session['email'] = form.email.data
+            return "Success"
+            #return redirect(url_for('home'))
 
     elif request.method == 'GET':
         return render_template("NewProductRequest.html", form=form)
-
+    else:
+        return "AWESOME"
 
 @app.route("/logout")
 def logout():
