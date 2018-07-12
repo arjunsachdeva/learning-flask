@@ -1,107 +1,67 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <main class="container signup-section">
+  <main class="hero-section">
+    <div class="container" text-align="center">
+      <h2>To register a request for a new product, please enter the following details:</h2>
+
     <div class="section-content">
-      <h2>Register a request for a new Product.</h2>
+    <form action="/NewProductRequest" method="POST">
+    {{ form.hidden_tag() }}
+   
+    {% for field in form %}
+    
+        {% if field.type != 'CSRFTokenField' and field.type != 'SubmitField'%}
 
-      <form method="POST" action="/NewProductRequest">
-        {{ form.hidden_tag() }}
+        {% set dpi_keyword = 'dpi_' %}
+        {% if dpi_keyword not in field.name %}        
 
-        <div class="form-group">
-          {{ form.productName.label }}
+         <div class="form-group">
+           {{ field.label() }}
 
-          {% if form.productName.errors %}
-            {% for error in form.productName.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.productName }}
+              {% if field.errors %}
+                {% for error in field.errors %}
+                  <p class="error-message">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+           
+           {{ field() }}
         </div>
+        
+        {% endif %}
+        {% endif %}
+   
+     {% endfor %}
+    </div>
 
-        <div class="form-group">
-          {{ form.region.label }}
+   <div class="section-content">
+   <fieldset> <legend>DPI Parameters:</legend>
+   {% for field in form %}
 
-          {% if form.region.errors %}
-            {% for error in form.region.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
+        {% set dpi_keyword = 'dpi_' %}
+        {% if dpi_keyword in field.name %}        
 
-          {{ form.region }}
+         <div class="form-group form-inline">
+           {{ field.label() }}
+
+              {% if field.errors %}
+                {% for error in field.errors %}
+                  <p class="error-message">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+           
+           {{ field() }}
         </div>
-
-        <div class="form-group">
-          {{ form.technology.label }}
-
-          {% if form.technology.errors %}
-            {% for error in form.technology.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.technology }}
-        </div>
-        <div class="form-group">
-          {{ form.usersCategory.label }}
-
-          {% if form.usersCategory.errors %}
-            {% for error in form.usersCategory.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.usersCategory }}
-        </div>
-        <div class="form-group">
-          {{ form.environment.label }}
-
-          {% if form.environment.errors %}
-            {% for error in form.environment.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.environment }}
-        </div>
-        <div class="form-group">
-          {{ form.serviceCodeType.label }}
-
-          {% if form.serviceCodeType.errors %}
-            {% for error in form.serviceCodeType.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.serviceCodeType }}
-        </div>
-        <div class="form-group">
-          {{ form.dpiParameters.label }}
-
-          {% if form.dpiParameters.errors %}
-            {% for error in form.dpiParameters.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.dpiParameters }}
-        </div>
-        <div class="form-group">
-          {{ form.policyName.label }}
-
-          {% if form.policyName.errors %}
-            {% for error in form.policyName.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.policyName }}
-        </div>
-
-
-        {{ form.submit(class="btn-primary") }}
-      </form>
+        
+        {% endif %}
+    {% endfor %}
+   </fieldset>
+ 
+    {{ form.submit(class="btn-primary") }}
+    </form>
+    </div>
+    
+    </div>
     </div>
   </main>
 {% endblock %}

@@ -63,14 +63,27 @@ def login():
     elif request.method == 'GET':
         return render_template('login.html', form=form)
 
+#from flask import flash
+def flash_errors(form):
+    for field, errors in form.errors.items():
+        for error in errors:
+            print ('Form Validation Error:')
+            print ('Field: ', field)
+            print ('Error:' , error)
+
+
 @app.route("/NewProductRequest", methods=['GET', 'POST'])
 def new_product_request():
     form = NewProductRequestForm()
+
     if request.method == 'POST':
         if form.validate() == False:
-            return render_template("NewProductRequest.html", form=form)
+            flash_errors(form)
+            return ('Validation Failed. Please re-submit your request.')
+            #return render_template("NewProductRequest.html", form=form)
         else:
-            newRequest = ProductRequest(form.productName.data, form.region.data, form.technology.data, form.usersCategory.data, form.environment.data, form.serviceCodeType.data, form.dpiParameters.data, form.policyName.data)
+            newRequest = ProductRequest(form)
+
             db.session.add(newRequest)
             db.session.commit()
             

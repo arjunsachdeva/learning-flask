@@ -24,7 +24,7 @@ class User(db.Model):
     return check_password_hash(self.pwdhash, password)
 
 class ProductRequest(db.Model):
-  __tablename__ = 'newproductrequest'
+  __tablename__ = 'datanewproductrequest'
   uid = db.Column(db.Integer, primary_key = True)
   productname = db.Column(db.String(200))
   region = db.Column(db.String(200))
@@ -32,17 +32,49 @@ class ProductRequest(db.Model):
   userscategory = db.Column(db.String(200))
   environment = db.Column(db.String(200))
   servicecodetype = db.Column(db.String(200))
-  dpiparameters = db.Column(db.String(200))
+  dpi_fl_rate_limit = db.Column(db.String(200))
+  dpi_rl_rate_limit = db.Column(db.String(200))
+  dpi_fl_volume_control = db.Column(db.String(200))
+  dpi_rl_volume_control = db.Column(db.String(200))
+  dpi_fl_rate_limit_post = db.Column(db.String(200))
+  dpi_rl_rate_limit_post = db.Column(db.String(200))
+  dpi_fl_voip_rate_limit = db.Column(db.String(200))
+  dpi_rl_voip_rate_limit = db.Column(db.String(200))
+  dpi_blocking_feature = db.Column(db.String(200))
+  dpi_shaping_feature = db.Column(db.String(200))
+  dpi_allow_feature = db.Column(db.String(200))
+  dpi_content_filter = db.Column(db.String(200))
+  dpi_msg_whitelist = db.Column(db.String(200))
+  dpi_big_sockets = db.Column(db.String(200))
+  dpi_acpu_release = db.Column(db.String(200))
   policyname = db.Column(db.String(200))
 
-  def __init__(self, productname, region, technology, userscategory, environment, servicecodetype, dpiparameters, policyname):
-    self.productname = productname.title()
-    self.region = region.title()
-    self.technology = technology.title()
-    self.userscategory = userscategory.title()
-    self.environment = environment.title()
-    self.servicecodetype = servicecodetype.title()
-    self.dpiparameters = dpiparameters.title()
-    self.policyname = policyname.title()
+  def __init__(self, form):
+    self.productname = form.productName.data.title()
+    self.region = form.region.data.title()
+    self.technology = form.technology.data.title()
+    self.userscategory = form.usersCategory.data.title()
+    self.environment = form.environment.data.title()
+    self.servicecodetype = form.serviceCodeType.data.title()
+
+
+    self.dpi_fl_rate_limit      = form.dpi_fl_rate_limit.data.title()
+    self.dpi_rl_rate_limit      = form.dpi_rl_rate_limit.data.title()
+    self.dpi_fl_volume_control  = form.dpi_fl_volume_control.data.title()
+    self.dpi_rl_volume_control  = form.dpi_rl_volume_control.data.title()
+    self.dpi_fl_rate_limit_post = form.dpi_fl_rate_limit_post.data.title()
+    self.dpi_rl_rate_limit_post = form.dpi_rl_rate_limit_post.data.title()
+    self.dpi_fl_voip_rate_limit = form.dpi_fl_voip_rate_limit.data.title()
+    self.dpi_rl_voip_rate_limit = form.dpi_rl_voip_rate_limit.data.title()
+    self.dpi_blocking_feature   = form.dpi_blocking_feature.data.title()
+    self.dpi_shaping_feature    = form.dpi_shaping_feature.data.title()
+    self.dpi_allow_feature      = form.dpi_allow_feature.data.title()
+    self.dpi_content_filter     = form.dpi_content_filter.data.title()
+    self.dpi_msg_whitelist      = form.dpi_msg_whitelist.data.title()
+    self.dpi_big_sockets        = form.dpi_big_sockets.data.title()
+    self.dpi_acpu_release       = form.dpi_acpu_release.data.title()
+
+
+    self.policyname = form.policyName.data.title()
 
 

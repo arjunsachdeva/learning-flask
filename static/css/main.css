@@ -45,6 +45,7 @@ a {
   color: #3a3a3a;
   float: left;
   width: 340px;
+  margin: 0 auto;
 }
 
 .section-device {
@@ -97,9 +98,10 @@ header {
 }
 
 .title {
+  color: #b52c22;
   float: left;
   font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  font-size: 17px;
+  font-size: 20px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
 }
@@ -164,15 +166,20 @@ header {
 
 .form-group {
   margin-bottom: 20px;
+  margin:0 auto;
+  /*text-align: center;
+  vertical-align: middle;
+  */
 }
 
 .form-group label {
-  color: #3a3a3a;
+  color: #078bb7;
   display: block;
   font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
+  margin: 5% auto;
 }
 
 .form-group input {
@@ -182,11 +189,11 @@ header {
   color: #3a3a3a;
   font-size: 18px;
   padding: 5px 0;
-  width: 100%;
+  width: 70%;
 }
 
 .form-group input:focus {
-  outline: 0;
+  outline: 100%;
 }
 
 .form-group .error-message {
