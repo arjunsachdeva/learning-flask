@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from models import db, User, ProductRequest
 from forms import SignupForm, LoginForm, NewProductRequestForm
+from flask import flash
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+Bootstrap(app)
+
+#app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
 db.init_app(app)
@@ -100,6 +105,37 @@ def new_product_request():
 def logout():
     session.pop('email', None)
     return redirect(url_for('index'))
+
+#############################################################
+# Method that searches for db elements.
+#############################################################
+from tables import Results
+
+@app.route('/results')
+def search_results():
+    results = []
+    #search_string = search.data['search']
+ 
+    abc = ''
+    if abc == '': #search.data['search'] == '':
+        #db.session.
+        qry = db.session.query(ProductRequest)
+        results = qry.all()
+ 
+    if not results:
+        flash('No results found!')
+        return redirect('/')
+    else:
+        # display results
+        table = Results(results)
+        table.border = True
+        return render_template('results.html', table=table)
+
+
+
+
+
+
 
 if __name__ == "__main__":
   app.run(debug=True)

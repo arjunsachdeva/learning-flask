@@ -1,0 +1,27 @@
+from flask_table import Table, Col
+
+
+class Results(Table):
+    uid                   = Col('Id', show=False)
+    productname           = Col('Product Name')
+    region                = Col('Region')
+    technology            = Col('Technology')   
+    userscategory         = Col('Users category')   
+    environment           = Col('Environment')
+    servicecodetype       = Col('Service Code Type')
+    dpi_fl_rate_limit     = Col('FL(Download) Rate Limit Pre-VC (Kbps)')
+    dpi_rl_rate_limit     = Col('RL(Upload) Rate Limit Pre-VC (Kbps)')
+    dpi_fl_volume_control = Col('FL(Download) Volume Control/Threshold (MB)')
+    dpi_rl_volume_control = Col('RL(Upload) Volume Control/Threshold (MB)')
+    dpi_fl_rate_limit_post= Col('FL(Download) Rate Limit Post-VC (Kbps)')
+    dpi_rl_rate_limit_post= Col('RL(Upload) Rate Limit Post-VC (Kbps)')
+    dpi_fl_voip_rate_limit= Col('FL(Download) VOIP Rate Limit (Kbps)')
+    dpi_rl_voip_rate_limit= Col('RL(Upload) VOIP Rate Limit (Kbps)')
+    dpi_blocking_feature  = Col('Blocking Feature')
+    dpi_shaping_feature   = Col('Shaping Feature')
+    dpi_allow_feature     = Col('Allow Feature')
+    dpi_content_filter    = Col('Content Filter')
+    dpi_msg_whitelist     = Col('MSG White List Version')
+    dpi_big_sockets       = Col('Bigsockets')
+    dpi_acpu_release      = Col('ACPU Release')
+    policyname            = Col('Policy Name')

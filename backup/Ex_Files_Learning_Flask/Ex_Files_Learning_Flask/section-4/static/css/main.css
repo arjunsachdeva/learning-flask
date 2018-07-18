@@ -45,7 +45,6 @@ a {
   color: #3a3a3a;
   float: left;
   width: 340px;
-  margin: 0 auto;
 }
 
 .section-device {
@@ -98,10 +97,9 @@ header {
 }
 
 .title {
-  color: #b52c22;
   float: left;
   font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
 }
@@ -166,20 +164,15 @@ header {
 
 .form-group {
   margin-bottom: 20px;
-  margin:0 auto;
-  /*text-align: center;
-  vertical-align: middle;
-  */
 }
 
 .form-group label {
-  color: #078bb7;
+  color: #3a3a3a;
   display: block;
   font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 5px;
-  margin: 5% auto;
 }
 
 .form-group input {
@@ -189,11 +182,11 @@ header {
   color: #3a3a3a;
   font-size: 18px;
   padding: 5px 0;
-  width: 70%;
+  width: 100%;
 }
 
 .form-group input:focus {
-  outline: 100%;
+  outline: 0;
 }
 
 .form-group .error-message {
@@ -292,27 +285,4 @@ header {
 
 .leaflet-popup-content p {
   margin: 10px 0 ;
-}
-
-tr:hover {background-color: #f5f5f5;}
-tr:nth-child(even) {background-color: #f2f2f2;}
-
-table {
-  border: 1px solid black;
-}
-
-th {
-  background-color: rgb(19, 128, 122);
-  color: white;
-  border-bottom: 1px solid rgb(124, 32, 32);
-  padding: 15px;
-  text-align: left;
-}
-
-td {
-  background-color: rgba(146, 253, 248, 0.089);
-  color: black;
-  border-bottom: 1px solid rgb(124, 32, 32);
-  padding: 15px;
-  text-align: left;
 }
